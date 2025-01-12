@@ -1,8 +1,8 @@
-using System.Linq;
 using Godot;
+using System.Linq;
 
 
-public partial class Pole : Sprite2D
+public partial class Pole : Area2D
 {
 
 	// used to determine when to spawn new pole
@@ -11,10 +11,12 @@ public partial class Pole : Sprite2D
 
 	private static float width;
 
+	private Sprite2D sprite;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		
+		// sprite = (Sprite2D)GetNode<Node>("Sprite2D");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -27,6 +29,9 @@ public partial class Pole : Sprite2D
 		Position -= new Vector2((float)(FlappyBird.Speed * delta), 0.0f);
 		if(Position.X <= -width && Visible) {
 			Bird.Score++;
+			var label = GetParent().GetParent().GetNode<Label>("CurrentScore");
+			label.Text = Bird.Score.ToString();
+			Game.AnimateCurrentScore(ref label);
 			Visible = false;
 		}
 	}
@@ -46,9 +51,6 @@ public partial class Pole : Sprite2D
 
 	public static void Spawn(double delta, ref Node pole)
 	{
-		if(!FlappyBird.IsStateEqual(FlappyBird.GameState.PLAYING)) 
-			return;
-
 		_spawnCounter += delta;
 		if(_spawnCounter < _lastSpawnTime) return;
 

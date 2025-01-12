@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dnx3klslatpny"]
 
-[ext_resource type="Script" path="res://Scripts/Menu.cs" id="1_bk2r5"]
-[ext_resource type="Texture2D" uid="uid://dbs4rgq70c31y" path="res://Assets/Mobile-Flappy-Bird-Version-12-Sprites.png" id="1_pd2yo"]
+[ext_resource type="Script" path="res://Scripts/Menu.cs" id="1_22cu8"]
+[ext_resource type="Texture2D" uid="uid://dbs4rgq70c31y" path="res://Assets/Mobile-Flappy-Bird-Version-12-Sprites.png" id="2_01pnn"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -12,11 +12,11 @@ offset_right = 3.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
-script = ExtResource("1_bk2r5")
+script = ExtResource("1_22cu8")
 
 [node name="Background" type="Sprite2D" parent="."]
 scale = Vector2(2.52083, 2.35294)
-texture = ExtResource("1_pd2yo")
+texture = ExtResource("2_01pnn")
 centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 144, 255)
@@ -24,14 +24,14 @@ region_rect = Rect2(0, 0, 144, 255)
 [node name="Floor" type="Sprite2D" parent="."]
 position = Vector2(180.221, 536.892)
 scale = Vector2(2.15214, 2.2506)
-texture = ExtResource("1_pd2yo")
+texture = ExtResource("2_01pnn")
 region_enabled = true
 region_rect = Rect2(291.35, 0, 168.482, 55.543)
 
 [node name="GetReady" type="Sprite2D" parent="."]
 position = Vector2(181, 242)
 scale = Vector2(1.89691, 1.69231)
-texture = ExtResource("1_pd2yo")
+texture = ExtResource("2_01pnn")
 region_enabled = true
 region_rect = Rect2(292.818, 58.2747, 97.2728, 26.3637)
 
@@ -39,41 +39,41 @@ region_rect = Rect2(292.818, 58.2747, 97.2728, 26.3637)
 visible = false
 position = Vector2(184, 237)
 scale = Vector2(1.89691, 1.69231)
-texture = ExtResource("1_pd2yo")
+texture = ExtResource("2_01pnn")
 region_enabled = true
 region_rect = Rect2(391.225, 57.3285, 101.831, 25.4578)
 
 [node name="TapToPlay" type="Sprite2D" parent="."]
 position = Vector2(181, 366)
 scale = Vector2(3.18574, 3.19098)
-texture = ExtResource("1_pd2yo")
+texture = ExtResource("2_01pnn")
 region_enabled = true
 region_rect = Rect2(291.037, 82.4241, 59.3736, 58.8893)
 
 [node name="FlappyBird" type="Sprite2D" parent="."]
 position = Vector2(182, 139)
 scale = Vector2(2.60189, 2.5012)
-texture = ExtResource("1_pd2yo")
+texture = ExtResource("2_01pnn")
 region_enabled = true
 region_rect = Rect2(347.67, 84.0434, 94.0656, 32.8126)
 
 [node name="Rate" type="Sprite2D" parent="."]
 position = Vector2(64, 555)
 scale = Vector2(2.60189, 2.5012)
-texture = ExtResource("1_pd2yo")
+texture = ExtResource("2_01pnn")
 region_enabled = true
 region_rect = Rect2(464.142, 0.110603, 33.6011, 19.4075)
 
 [node name="Menu" type="Sprite2D" parent="."]
 position = Vector2(294, 35)
 scale = Vector2(2.60189, 2.5012)
-texture = ExtResource("1_pd2yo")
+texture = ExtResource("2_01pnn")
 region_enabled = true
 region_rect = Rect2(461.415, 24.3753, 41.5192, 15.8613)
 
 [node name="Share" type="Sprite2D" parent="."]
 position = Vector2(273, 558)
 scale = Vector2(2.60189, 2.5012)
-texture = ExtResource("1_pd2yo")
+texture = ExtResource("2_01pnn")
 region_enabled = true
 region_rect = Rect2(291.692, 140.533, 57.3804, 15.8613)

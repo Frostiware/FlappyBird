@@ -44,13 +44,16 @@ public partial class Bird : Area2D
 		if(Input.IsActionJustReleased("tap"))
 		{
 			float impulse = -10000;
+			// v = It / mass; Assuming mass = 1
 			_velocity = new Vector2(0, impulse * (float)delta);
 		}
 
 		_velocity += _weight * (float)delta;
 		Position += _velocity * (float)delta;
-
 		Distance += Speed * (float)delta;
+
+		if(Position.Y - _size.Y * 0.5f <= 0)
+			Position = new(Position.X, _size.Y * 0.5f);
 	}
 
 
@@ -63,13 +66,18 @@ public partial class Bird : Area2D
 			if(name.StartsWith(collideable)) {
 				if(collideable == "Floor") 
 					Position = new(Position.X, Floor.Pos.Y - _size.Y * 0.5f);
-				else if(collideable == "Pole") 
-				{
-					GD.Print("Colliding with poles");
-				}
+
 				FlappyBird.SetState(FlappyBird.GameState.OVER);
-				var gameOverNode = (GetParent()).GetNode<Node>("GameOver");
+				var gameOverNode = GetParent().GetNode<Node>("GameOver");
 				Game.ToggleGameOver(ref gameOverNode);
+
+				BestScore = Math.Max(BestScore, Score);
+
+				var score = gameOverNode.GetNode<Label>("Control/Score");
+				var bestScore = gameOverNode.GetNode<Label>("Control/BestScore");
+				score.Text = Bird.Score.ToString();
+				bestScore.Text = Bird.BestScore.ToString();
+				
 				return;
 			}
 		}
