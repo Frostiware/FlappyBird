@@ -1,5 +1,5 @@
+using Godot;
 using System;
-using System.Linq;
 
 
 public class FlappyBird
@@ -14,26 +14,44 @@ public class FlappyBird
 		OVER
 	};
 	
-	public static GameState State;
+	public static GameState _state;
 	public static double Speed;
+	public static Vector2 WindowSize{ get; set; }
 
-	public static int Width, Height;
-
-	public static bool IsDay;
+	public static bool IsDay{ get; set; }
 
 	public static double GetRandRange(double min, double max)
 	{
 		return random.NextDouble() * (max - min + 1) + min;
 	}
 
+
+	public static GameState GetState()
+	{
+		return _state;
+	}
+
+	public static void SetState(GameState state)
+	{
+		// do not pause what is not playing
+		if(state == GameState.PAUSED && _state != GameState.PLAYING)
+			return;
+		_state = state;
+	}
+
+	public static bool IsStateEqual(GameState state)
+	{
+		return _state == state;
+	}
+
+
 	static FlappyBird()
 	{
 		random = new Random();
-		State = GameState.MENU;
+		SetState(GameState.MENU);
 		IsDay = true;
 		Speed = 40.0;
-		Width = 364;
-		Height = 650;
+		WindowSize = new(364, 600);
 	}
 
 }

@@ -1,27 +1,27 @@
 using Godot;
 using System;
 
-public partial class Floor : StaticBody2D
+public partial class Floor : Area2D
 {
-	private float posY;
+	public static Vector2 Pos{ get; set; }
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		posY = Position.Y;
+		Pos = Position;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		if(FlappyBird.State != FlappyBird.GameState.PLAYING) 
+		if(!FlappyBird.IsStateEqual(FlappyBird.GameState.PLAYING))
 			return;
-
-		var nPos = new Vector2(Position.X - (float)(FlappyBird.Speed * delta), posY);
+			
+		var nPos = new Vector2(Position.X - (float)(FlappyBird.Speed * delta), Pos.Y);
 		Position = nPos;
-		if(Position.X <= -FlappyBird.Width)
+		if(Position.X <= -FlappyBird.WindowSize.X)
 		{
-			Position = new Vector2(FlappyBird.Width, posY);
+			Position = new Vector2(FlappyBird.WindowSize.X, Pos.Y);
 		}
 
 	}

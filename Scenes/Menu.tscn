@@ -15,15 +15,15 @@ size_flags_horizontal = 0
 script = ExtResource("1_bk2r5")
 
 [node name="Background" type="Sprite2D" parent="."]
-scale = Vector2(2.52083, 2.55686)
+scale = Vector2(2.52083, 2.35294)
 texture = ExtResource("1_pd2yo")
 centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 144, 255)
 
 [node name="Floor" type="Sprite2D" parent="."]
-position = Vector2(180.221, 583)
-scale = Vector2(2.15214, 2.5012)
+position = Vector2(180.221, 536.892)
+scale = Vector2(2.15214, 2.2506)
 texture = ExtResource("1_pd2yo")
 region_enabled = true
 region_rect = Rect2(291.35, 0, 168.482, 55.543)
@@ -58,7 +58,7 @@ region_enabled = true
 region_rect = Rect2(347.67, 84.0434, 94.0656, 32.8126)
 
 [node name="Rate" type="Sprite2D" parent="."]
-position = Vector2(64, 607)
+position = Vector2(64, 555)
 scale = Vector2(2.60189, 2.5012)
 texture = ExtResource("1_pd2yo")
 region_enabled = true
@@ -72,7 +72,7 @@ region_enabled = true
 region_rect = Rect2(461.415, 24.3753, 41.5192, 15.8613)
 
 [node name="Share" type="Sprite2D" parent="."]
-position = Vector2(273, 611)
+position = Vector2(273, 558)
 scale = Vector2(2.60189, 2.5012)
 texture = ExtResource("1_pd2yo")
 region_enabled = true

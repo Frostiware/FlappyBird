@@ -1,8 +1,13 @@
+using System.Linq;
 using Godot;
 
 
 public partial class Pole : Sprite2D
 {
+
+	// used to determine when to spawn new pole
+	private static double _lastSpawnTime = 10.0;
+	private static double _spawnCounter = 0.0;
 
 	private static float width;
 
@@ -15,10 +20,15 @@ public partial class Pole : Sprite2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		if(!FlappyBird.IsStateEqual(FlappyBird.GameState.PLAYING))
+			return;
+			
 		if(!Visible) return;
 		Position -= new Vector2((float)(FlappyBird.Speed * delta), 0.0f);
-		if(Position.X <= -width && Visible)
+		if(Position.X <= -width && Visible) {
+			Bird.Score++;
 			Visible = false;
+		}
 	}
 
 	public void SetSize(Vector2 desiredSize, bool shouldRotate = false)
@@ -26,18 +36,26 @@ public partial class Pole : Sprite2D
 		var oldSize = new Vector2(23, 159);	// size of the rect region
 		Scale = desiredSize / oldSize;
 		Rotation = 0;
-		Position = new Vector2(FlappyBird.Width + width, desiredSize.Y * 0.5f);
+		Position = new Vector2(FlappyBird.WindowSize.X + width, desiredSize.Y * 0.5f);
 		if(shouldRotate)
 		{
 			Rotation = 3.14159f;
-			Position = new Vector2(FlappyBird.Width + width, FlappyBird.Height - desiredSize.Y * 0.5f);
+			Position = new Vector2(FlappyBird.WindowSize.X + width, FlappyBird.WindowSize.Y - desiredSize.Y * 0.5f);
 		}
 	}
 
-	public static void Spawn(ref Node pole)
+	public static void Spawn(double delta, ref Node pole)
 	{
+		if(!FlappyBird.IsStateEqual(FlappyBird.GameState.PLAYING)) 
+			return;
+
+		_spawnCounter += delta;
+		if(_spawnCounter < _lastSpawnTime) return;
+
+		_spawnCounter = 0.0;
+		_lastSpawnTime = FlappyBird.GetRandRange(5, 10);
 		
-		double maxHeight = FlappyBird.Height * 0.85;
+		double maxHeight = FlappyBird.WindowSize.Y * 0.82;
 		float h1 = (float)FlappyBird.GetRandRange(maxHeight * 0.1, maxHeight * 0.9);
 		float h2 = (float)maxHeight - h1;
 
@@ -66,12 +84,10 @@ public partial class Pole : Sprite2D
 
 	public static void Init(ref Node pole)
 	{
-		width = FlappyBird.Width * 0.2f;
+		width = FlappyBird.WindowSize.Y * 0.15f;
 		var poles = pole.GetChildren();
-		foreach(Pole p in poles)
-		{
+		foreach(Pole p in poles.Cast<Pole>())
 			p.Visible = false;
-		}
 	}
 
 }

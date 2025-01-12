@@ -1,24 +1,63 @@
-[gd_scene load_steps=4 format=3 uid="uid://6kfoldkrbwdj"]
+[gd_scene load_steps=9 format=3 uid="uid://6kfoldkrbwdj"]
 
 [ext_resource type="Script" path="res://Scripts/Bird.cs" id="1_ca80h"]
 [ext_resource type="Texture2D" uid="uid://dbs4rgq70c31y" path="res://Assets/Mobile-Flappy-Bird-Version-12-Sprites.png" id="1_scsec"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_syh6c"]
+atlas = ExtResource("1_scsec")
+region = Rect2(0, 490, 27, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pwwo3"]
+atlas = ExtResource("1_scsec")
+region = Rect2(27, 490, 27, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_01v5r"]
+atlas = ExtResource("1_scsec")
+region = Rect2(54, 490, 27, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4bwk1"]
+atlas = ExtResource("1_scsec")
+region = Rect2(27, 484, 27, 22)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jhx5y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_syh6c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pwwo3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_01v5r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4bwk1")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iyck8"]
-radius = 20.0
-height = 40.0
+radius = 6.0
+height = 16.0
 
 [node name="Bird" type="Area2D"]
-position = Vector2(21, 286)
+z_index = 1
 script = ExtResource("1_ca80h")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(5, -260.25)
-scale = Vector2(3, 3.60714)
-texture = ExtResource("1_scsec")
-region_enabled = true
-region_rect = Rect2(2.27866, 489.851, 18.6726, 14.6029)
+scale = Vector2(1.02281, 1.32143)
+sprite_frames = SubResource("SpriteFrames_jhx5y")
+autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(4, -261)
+position = Vector2(-2, 0)
 shape = SubResource("CapsuleShape2D_iyck8")

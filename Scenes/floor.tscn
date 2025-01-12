@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yarxc"]
 size = Vector2(364, 90)
 
-[node name="FloorFragment" type="StaticBody2D"]
+[node name="FloorFragment" type="Area2D"]
 position = Vector2(2, 0)
 script = ExtResource("1_vxngb")
 

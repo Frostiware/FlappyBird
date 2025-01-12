@@ -20,7 +20,7 @@ region_enabled = true
 region_rect = Rect2(146.039, -0.243199, 144.193, 256.161)
 
 [node name="DayBg" type="Sprite2D" parent="Background"]
-scale = Vector2(2.52083, 2.54118)
+scale = Vector2(2.52083, 2.35686)
 texture = ExtResource("1_kjs3y")
 centered = false
 region_enabled = true
@@ -47,16 +47,15 @@ region_rect = Rect2(0, 0, 144.018, 255.967)
 [node name="Floors" type="Node" parent="."]
 
 [node name="FloorFragment" parent="Floors" instance=ExtResource("3_8yvr4")]
-position = Vector2(0, 559)
+position = Vector2(0, 512)
 
 [node name="FloorFragment2" parent="Floors" instance=ExtResource("3_8yvr4")]
-position = Vector2(361, 559)
+position = Vector2(362, 511)
 
 [node name="GameOver" type="Node" parent="."]
 
 [node name="ScoreBoard2" type="Sprite2D" parent="GameOver"]
-visible = false
-position = Vector2(102, 410)
+position = Vector2(108, 384)
 scale = Vector2(2.52083, 2.54118)
 texture = ExtResource("1_kjs3y")
 centered = false
@@ -64,8 +63,7 @@ region_enabled = true
 region_rect = Rect2(290.88, 119.856, 59.7592, 21.2049)
 
 [node name="ScoreBoard" type="Sprite2D" parent="GameOver"]
-visible = false
-position = Vector2(36, 217)
+position = Vector2(36, 181)
 scale = Vector2(2.52083, 2.54118)
 texture = ExtResource("1_kjs3y")
 centered = false
@@ -73,8 +71,7 @@ region_enabled = true
 region_rect = Rect2(2.72088, 258.304, 113.433, 59.584)
 
 [node name="GameOverText" type="Sprite2D" parent="GameOver"]
-visible = false
-position = Vector2(48, 116)
+position = Vector2(48, 103)
 scale = Vector2(2.52083, 2.54118)
 texture = ExtResource("1_kjs3y")
 centered = false
@@ -82,3 +79,12 @@ region_enabled = true
 region_rect = Rect2(394.622, 58.8025, 97.9666, 23.3254)
 
 [node name="Bird" parent="." instance=ExtResource("5_0pwst")]
+position = Vector2(60, 17)
+
+[node name="PausedIcon" type="Sprite2D" parent="."]
+z_index = 5
+position = Vector2(177, 257)
+scale = Vector2(3.78846, 3.42857)
+texture = ExtResource("1_kjs3y")
+region_enabled = true
+region_rect = Rect2(120.677, 305.752, 13.493, 14.1459)
