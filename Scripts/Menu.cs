@@ -21,7 +21,7 @@ public partial class Menu : Control
 		if(Input.IsActionJustReleased("tap"))
 		{
 			// Issue context should also be considered right here
-			GetTree().ChangeSceneToFile("res://Scenes/Game.tscn");
+			GetTree().ChangeSceneToFile("res://Scenes/Pages/Game.tscn");
 		}
 	}
 }
